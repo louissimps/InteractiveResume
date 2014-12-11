@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,7 +25,22 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
-                    {#<li><a href="{% url 'contact' %}">Contact</a></li>#}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="glyphicon glyphicon-user"></span></a>  
+                        <div class="dropdown-menu">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <p>{{ contact }}</p>
+                                    <p style="whitespace: nowrap">{{contact.street_address}}<br />
+                                        {{contact.city}}, {{contact.state}} {{contact.zip}}
+                                    </p>
+                                    <p><a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
+                                    <p>{{contact.phone}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>                      
+
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
