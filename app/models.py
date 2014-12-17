@@ -9,15 +9,16 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     street_address = models.CharField(max_length=100)
+    street_address2 = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=2)
     zip = models.IntegerField(default=0)
 
     email = models.EmailField()
-    phone = models.CharField(max_length=20)
+    phone = models.CharField(max_length=100, null=True, blank=True)
     last_updated = models.DateTimeField('date updated', auto_now_add=True)
 
-    def __str__(self):           
+    def __str__(self):
         return "{0} {1}".format(self.first_name, self.last_name)
 
 
@@ -37,14 +38,14 @@ class WorkHistory(models.Model):
     def __str__(self):
         return "{0} ({1}-{2}".format(self.place_of_work, self.start_date, self.end_date)
 
-    
+
 class Company(models.Model):
     company_name = models.CharField('Company Name', max_length=200)
     contact_name = models.CharField('Contact Name', max_length=200, null=True, blank=True)
     contact_email = models.EmailField('Contact Email', null=True, blank=True)
     contact_phone = models.CharField('Contact Phone', max_length=20, null=True, blank=True)
     last_updated = models.DateTimeField('date updated', auto_now_add=True)
-    def __str__(self):           
+    def __str__(self):
         return self.company_name
 
 class Resume(models.Model):
@@ -54,7 +55,7 @@ class Resume(models.Model):
     company = models.ForeignKey(Company, null=True)
     work_histories = models.ManyToManyField(WorkHistory, null=True, blank=True)
     last_updated = models.DateTimeField('date updated', auto_now_add=True)
-    def __str__(self):           
+    def __str__(self):
         return "{0} {1}".format(self.company.company_name, self.position)
 
 class Skill(models.Model):

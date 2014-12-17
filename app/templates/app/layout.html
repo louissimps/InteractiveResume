@@ -26,20 +26,34 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="glyphicon glyphicon-user"></span></a>  
-                        <div class="dropdown-menu">
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <p>{{ contact }}</p>
-                                    <p style="whitespace: nowrap">{{contact.street_address}}<br />
-                                        {{contact.city}}, {{contact.state}} {{contact.zip}}
-                                    </p>
-                                    <p><a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
-                                    <p>{{contact.phone}}</p>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="glyphicon glyphicon-user"></span></a>
+                        <div class="dropdown-menu"   style="white-space:nowrap;width:200px">
+                                <div class="row-fluid">
+                                    <div class="col-xs-2"><span class="glyphicon glyphicon-user"></span></div>
+                                    <div class="col-xs"> {{ contact }}</div>
                                 </div>
-                            </div>
+                                <div class="row-fluid">
+                                    <div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+                                    <div class="col-xs"> {{ contact.street_address }}</div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="col-xs-2"> </div>
+                                    <div class="col-xs"> {{ contact.street_address2 }}</div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="col-xs-2"> </div>
+                                    <div class="col-xs"> {{contact.city}}, {{contact.state}} {{contact.zip}}</div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="col-xs-2"><span class="glyphicon glyphicon-link"></span></div>
+                                    <div class="col-xs"> <a href="mailto:{{ contact.email }}"> {{ contact.email }}</a></div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="col-xs-2"><span class="glyphicon glyphicon-earphone"></span></div>
+                                    <div class="col-xs"> {{ contact.phone }}</div>
+                                </div>
                         </div>
-                    </li>                      
+                    </li>
 
                 </ul>
                 {% include 'app/loginpartial.html' %}
@@ -58,6 +72,9 @@
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
+    <script src="{% static 'app/scripts/physicsjs-full.min.js' %}"></script>
+    <script src="{% static 'app/scripts/app.js' %}"></script>
+
 {% block scripts %}{% endblock %}
 
 </body>

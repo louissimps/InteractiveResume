@@ -46,5 +46,7 @@ def about(request):
             'title':'About',
             'message':'Your application description page.',
             'year':datetime.now().year,
+            'contact': Contact.objects.get(pk=1),
+
         })
     )
