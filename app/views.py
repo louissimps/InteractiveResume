@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
-from app.models import Contact
+from app.models import Contact, WorkHistory, Education, WorkSkill
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -18,6 +18,7 @@ def home(request):
             'title':'Home Page',
             'year':datetime.now().year,
             'contact': Contact.objects.get(pk=1),
+            'current_position': WorkHistory.objects.get(is_current='True'),
         })
     )
 

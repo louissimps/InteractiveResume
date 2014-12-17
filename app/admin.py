@@ -1,5 +1,8 @@
 from django.contrib import admin
-from app.models import Resume, Contact, Company, Skill, WorkHistory, WorkSkill
+from os import path
+from django.conf import settings
+
+from app.models import Resume, Contact, Company, Skill, WorkHistory, WorkSkill, Education
 from app.forms import RequiredInlineFormSet
 
 class ResumeAdmin(admin.ModelAdmin):
@@ -13,7 +16,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 class WorkSkillTabularInline(admin.TabularInline):
     model = WorkSkill
-    
+
     
 
 
@@ -29,4 +32,5 @@ admin.site.register(Resume, ResumeAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Skill)
+admin.site.register(Education)
 admin.site.register(WorkHistory, WorkHistoryAdmin)
