@@ -2,9 +2,10 @@
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".
 """
-
 import django
 from django.test import TestCase
+from datetime import date
+from dateutil.rrule import rrule, MONTHLY
 
 # TODO: Configure your database in settings.py and sync before running tests.
 
@@ -21,6 +22,13 @@ class ViewTest(TestCase):
         """Tests the home page."""
         response = self.client.get('/')
         self.assertContains(response, 'Home Page', 1, 200)
+
+    def test_month_iterator(self):
+        a = date(2004, 1, 1)
+        b = date
+        for dt in rrule(MONTHLY, dtstart=a, until=b):
+            self.assertIsNotNone(dt.strftime("%Y"))
+
 
     # def test_contact(self):
     #     """Tests the contact page."""

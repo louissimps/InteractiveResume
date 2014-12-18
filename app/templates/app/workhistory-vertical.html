@@ -1,6 +1,14 @@
     {% load staticfiles %}
 <ul class="timeline">
 	{% for history in work_histories %}
+        <li>
+            <div class="timeline-badge">
+        {{ history.start_date|date:"Y" }}
+            </div>
+            <br />
+                <br />
+
+        </li>
 
 	<li{% cycle '' ' class="timeline-inverted"' %}>
           <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
