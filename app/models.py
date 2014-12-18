@@ -5,7 +5,6 @@ Definition of models.
 from django.db import models
 from django.utils import timezone
 from tinymce import models as tinymce_models
-import itertools
 
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
@@ -43,8 +42,6 @@ class WorkHistory(models.Model):
     @staticmethod
     def autocomplete_search_fields():
         return ('place_of_work__icontains',)
-
-
 
     def get_dates_string(self):
         return "({0}) - ({1})".format(self.start_date, self.end_date)

@@ -6,13 +6,10 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
-from dateutil.rrule import rrule, YEARLY
-
 from app.models import Contact, WorkHistory, Education, WorkSkill
 import itertools
 
 def home(request):
-
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
 
@@ -65,13 +62,6 @@ def about(request):
 
 def history(request):
     """Renders the about page."""
-    # a = datetime(1991, 1, 1)
-    # b = datetime.year
-    # years = []
-    # for dt in rrule(YEARLY, dtstart=a, until=b):
-    #     years.append(dt.strftime("%Y"))
-
-
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -81,7 +71,6 @@ def history(request):
             'title':'Work History',
             'contact': Contact.objects.get(pk=1),
             'work_histories': WorkHistory.objects.all().order_by('-start_date'),
-            # 'iterator': itertools.count(),
 
         })
     )
