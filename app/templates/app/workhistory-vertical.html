@@ -1,0 +1,22 @@
+    {% load staticfiles %}
+<ul class="timeline">
+	{% for history in work_histories %}
+
+	<li{% cycle '' ' class="timeline-inverted"' %}>
+          <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">{{ history.position }}</h4>
+              <h6 class="timeline-title">{{ history.place_of_work }}</h6>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Start Date: {{ history.start_date }}<br />
+                End Date: {{ history.end_date }}
+				</small></p>
+            </div>
+            <div class="timeline-body">
+				<p>{{ history.work_description | safe }}</p>
+
+            </div>
+          </div>
+        </li>
+	{% endfor %}
+</ul>

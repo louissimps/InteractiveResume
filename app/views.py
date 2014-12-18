@@ -10,6 +10,9 @@ from app.models import Contact, WorkHistory, Education, WorkSkill
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
+
+    work_histories = WorkHistory.objects.all().order_by('-start_date')
+
     return render(
         request,
         'app/index.html',
@@ -19,8 +22,11 @@ def home(request):
             'year':datetime.now().year,
             'contact': Contact.objects.get(pk=1),
             'current_position': WorkHistory.objects.get(is_current='True'),
+            'work_histories': work_histories,
         })
     )
+
+
 
 def contact(request):
     """Renders the contact page."""
@@ -48,6 +54,21 @@ def about(request):
             'message':'Your application description page.',
             'year':datetime.now().year,
             'contact': Contact.objects.get(pk=1),
+
+        })
+    )
+
+def history(request):
+    """Renders the about page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/history.html',
+        context_instance = RequestContext(request,
+        {
+            'title':'Work History',
+            'contact': Contact.objects.get(pk=1),
+            'work_histories': WorkHistory.objects.all().order_by('-start_date'),
 
         })
     )
