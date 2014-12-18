@@ -2,7 +2,7 @@
 <ul class="timeline">
 	{% for history in work_histories %}
         <li>
-            <div class="timeline-badge">
+            <div class="timeline-badge primary">
         {{ history.start_date|date:"Y" }}
             </div>
             <br />
@@ -11,7 +11,7 @@
         </li>
 
 	<li{% cycle '' ' class="timeline-inverted"' %}>
-          <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+          <div class="timeline-badge success"><i class="glyphicon glyphicon-hand-{% cycle 'left' 'right' %}"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">{{ history.position }}</h4>
