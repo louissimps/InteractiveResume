@@ -5,7 +5,7 @@ Definition of models.
 from django.db import models
 from django.utils import timezone
 from tinymce import models as tinymce_models
-
+from autoslug import AutoSlugField
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -23,14 +23,8 @@ class Contact(models.Model):
         return "{0} {1}".format(self.first_name, self.last_name)
 
 
-
-
-
-
-
-
 class WorkHistory(models.Model):
-    is_current = models.BooleanField("Is Current Position")
+    is_current = models.NullBooleanField("Is Current Position")
 
     place_of_work = models.CharField('Place Of Work', max_length=200)
     location = models.CharField('Location', max_length=200)
@@ -38,7 +32,16 @@ class WorkHistory(models.Model):
     end_date = models.DateField('End Date', null=True, blank=True)
     position = models.CharField("Position Title", max_length=200, null=True, blank=True)
     work_description = tinymce_models.HTMLField('Description of Position', null=True, blank=True)
+    slug = AutoSlugField(populate_from='place_of_work', unique=True, unique_with=('start_date',))
 #    skills = models.ForeignKey(WorkSkill)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('workhistory', (), {
+            'slug': self.slug,
+            'id': self.id,
+        })
+
     @staticmethod
     def autocomplete_search_fields():
         return ('place_of_work__icontains',)
@@ -70,6 +73,7 @@ class Company(models.Model):
     def __str__(self):
         return self.company_name
 
+
 class Resume(models.Model):
     about_me = models.TextField('About Me')
     position = models.CharField('What kind of Opportunity are you looking for?', max_length=200)
@@ -80,11 +84,13 @@ class Resume(models.Model):
     def __str__(self):
         return "{0} {1}".format(self.company.company_name, self.position)
 
+
 class Skill(models.Model):
 
     skill_name = models.CharField('Skill Name', max_length=200)
     def __str__(self):
         return self.skill_name
+
 
 class WorkSkill(models.Model):
     SKILL_MINIMAL_EXPOSURE = 0

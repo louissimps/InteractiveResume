@@ -1,3 +1,4 @@
+{% load cycle from future %}
     {% load staticfiles %}
 <ul class="timeline">
 	{% for history in work_histories %}
@@ -21,8 +22,8 @@
 				</small></p>
             </div>
             <div class="timeline-body">
-				<p>{{ history.work_description | safe }}</p>
-
+				<p>{{ history.work_description | truncatechars:200 | safe  }}</p>
+                <div class="float-right"><a class="btn btn-default" href="{{  history.get_absolute_url }}">Details.... &raquo;</a></div>
             </div>
           </div>
         </li>

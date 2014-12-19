@@ -8,6 +8,8 @@ from django.template import RequestContext
 from datetime import datetime
 from app.models import Contact, WorkHistory, Education, WorkSkill
 import itertools
+from django.utils.text import slugify
+
 
 def home(request):
     """Renders the home page."""
@@ -20,8 +22,8 @@ def home(request):
         'app/index.html',
         context_instance = RequestContext(request,
         {
-            'title':'Home Page',
-            'year':datetime.now().year,
+            'title': 'Home Page',
+            'year': datetime.now().year,
             'contact': Contact.objects.get(pk=1),
             'current_position': WorkHistory.objects.get(is_current='True'),
             'work_histories': work_histories,
@@ -36,13 +38,14 @@ def contact(request):
     return render(
         request,
         'app/contact.html',
-        context_instance = RequestContext(request,
+        context_instance=RequestContext(request,
         {
-            'title':'Contact',
-            'message':'Your contact page.',
-            'year':datetime.now().year,
+            'title': 'Contact',
+            'message': 'Your contact page.',
+            'year': datetime.now().year,
         })
     )
+
 
 def about(request):
     """Renders the about page."""
@@ -52,13 +55,14 @@ def about(request):
         'app/about.html',
         context_instance = RequestContext(request,
         {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
+            'title': 'About',
+            'message': 'Your application description page.',
+            'year': datetime.now().year,
             'contact': Contact.objects.get(pk=1),
 
         })
     )
+
 
 def history(request):
     """Renders the about page."""
@@ -68,9 +72,24 @@ def history(request):
         'app/history.html',
         context_instance = RequestContext(request,
         {
-            'title':'Work History',
+            'title': 'Work History',
             'contact': Contact.objects.get(pk=1),
             'work_histories': WorkHistory.objects.all().order_by('-start_date'),
+
+        })
+    )
+
+
+def workhistory(request, id):
+    """Renders the about page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/workhistory.html',
+        context_instance = RequestContext(request,
+        {
+            'title': 'Work History Detail',
+            'work_history': WorkHistory.objects.get(pk=id),
 
         })
     )
