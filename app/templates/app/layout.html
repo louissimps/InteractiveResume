@@ -27,35 +27,6 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'history' %}">Work History</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contact <span class="glyphicon glyphicon-user"></span></a>
-                        <div class="dropdown-menu"   style="white-space:nowrap;width:200px">
-                                <div class="row-fluid">
-                                    <div class="col-xs-2"><span class="glyphicon glyphicon-user"></span></div>
-                                    <div class="col-xs"> {{ contact }}</div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-                                    <div class="col-xs"> {{ contact.street_address }}</div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="col-xs-2"> </div>
-                                    <div class="col-xs"> {{ contact.street_address2 }}</div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="col-xs-2"> </div>
-                                    <div class="col-xs"> {{contact.city}}, {{contact.state}} {{contact.zip}}</div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="col-xs-2"><span class="glyphicon glyphicon-link"></span></div>
-                                    <div class="col-xs"> <a href="mailto:{{ contact.email }}"> {{ contact.email }}</a></div>
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="col-xs-2"><span class="glyphicon glyphicon-earphone"></span></div>
-                                    <div class="col-xs"> {{ contact.phone }}</div>
-                                </div>
-                        </div>
-                    </li>
 
                 </ul>
                 {% include 'app/loginpartial.html' %}

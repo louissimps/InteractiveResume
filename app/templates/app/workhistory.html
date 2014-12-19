@@ -3,6 +3,7 @@
 {% block content %}
 {% load staticfiles %}
 
-    {{ work_history.position }}
+    <h2>{{ work_history.position }}</h2>
+    <h4>{{ work_history.work_description | safe }}</h4>
 
 {% endblock %}

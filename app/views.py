@@ -80,7 +80,7 @@ def history(request):
     )
 
 
-def workhistory(request, id):
+def workhistory(request, id, slug):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
     return render(

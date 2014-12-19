@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from tinymce import models as tinymce_models
 from autoslug import AutoSlugField
+
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -32,14 +33,16 @@ class WorkHistory(models.Model):
     end_date = models.DateField('End Date', null=True, blank=True)
     position = models.CharField("Position Title", max_length=200, null=True, blank=True)
     work_description = tinymce_models.HTMLField('Description of Position', null=True, blank=True)
-    slug = AutoSlugField(populate_from='place_of_work', unique=True, unique_with=('start_date',))
+    slug = AutoSlugField(populate_from='place_of_work', always_update=True, unique_with=('start_date__year',))
+
+
 #    skills = models.ForeignKey(WorkSkill)
 
     @models.permalink
     def get_absolute_url(self):
         return ('workhistory', (), {
-            'slug': self.slug,
             'id': self.id,
+            'slug': self.slug,
         })
 
     @staticmethod
