@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^contact$', 'app.views.contact', name='contact'),
     url(r'^about', 'app.views.about', name='about'),
     url(r'^history', 'app.views.history', name='history'),
+    url(r'^workhistory/(?P<slug>[-\w]+)/(?P<id>[\d]+)/', 'app.views.workhistory', name='workhistory'),
     url(r'^login/$',
         'django.contrib.auth.views.login',
         {

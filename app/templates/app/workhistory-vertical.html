@@ -1,8 +1,9 @@
+{% load cycle from future %}
     {% load staticfiles %}
 <ul class="timeline">
 	{% for history in work_histories %}
         <li>
-            <div class="timeline-badge">
+            <div class="timeline-badge primary">
         {{ history.start_date|date:"Y" }}
             </div>
             <br />
@@ -11,7 +12,7 @@
         </li>
 
 	<li{% cycle '' ' class="timeline-inverted"' %}>
-          <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+          <div class="timeline-badge success"><i class="glyphicon glyphicon-hand-{% cycle 'left' 'right' %}"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">{{ history.position }}</h4>
@@ -21,8 +22,8 @@
 				</small></p>
             </div>
             <div class="timeline-body">
-				<p>{{ history.work_description | safe }}</p>
-
+				<p>{{ history.work_description | truncatechars:200 | safe  }}</p>
+                <div class="float-right"><a class="btn btn-default" href="{{  history.get_absolute_url }}">Details.... &raquo;</a></div>
             </div>
           </div>
         </li>
