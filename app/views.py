@@ -14,9 +14,7 @@ from django.utils.text import slugify
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
-
-    work_histories = WorkHistory.objects.all().order_by('-start_date')
-
+    wh = WorkHistory.objects.get(is_current='True')
     return render(
         request,
         'app/index.html',
@@ -25,10 +23,10 @@ def home(request):
             'title': 'Home Page',
             'year': datetime.now().year,
             'contact': Contact.objects.get(pk=1),
-            'current_position': WorkHistory.objects.get(is_current='True'),
-            'work_histories': work_histories,
+            'current_position': wh,
             'current_resume': Resume.objects.get(is_default=True),
             'current_application': Application.objects.get(pk=1),
+            'current_skills': wh.work_skills.through
         })
     )
 

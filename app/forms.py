@@ -36,6 +36,7 @@ class RequiredInlineFormSet(BaseInlineFormSet):
         """
         Override the method to change the form attribute empty_permitted
         """
+
         form = super(RequiredInlineFormSet, self)._construct_form(i, **kwargs)
         form.empty_permitted = False
         return form
@@ -44,37 +45,37 @@ class RequiredInlineFormSet(BaseInlineFormSet):
 
 
 
-class WorkSkillForm(forms.ModelForm):
-    workskills = forms.ModelMultipleChoiceField(
-        queryset=Skill.objects.all().order_by("skill_name"),
-        required=False,
-        widget=FilteredSelectMultiple(
-            verbose_name="workskills",
-            is_stacked=False
-        )
-
-    )
-
-    class Meta:
-        model = WorkSkill
-
-    def __init__(self, *args, **kwargs):
-        super(WorkSkillForm, self).__init__(*args, **kwargs)
-        if(self.instance.pk):
-            self.initial['workskills'] = self.instance.workskills.all()
-            rel = ManyToManyRel(WorkHistory)
-            self.fields['workskills'].widget = RelatedFieldWidgetWrapper(self.fields['workskills'].widget, rel, admin.site)
-
-    def save(self, commit=True):
-        workskill = super(WorkSkillForm, self).save(commit=False)
-
-        if commit:
-            workskill.save()
-
-        if(workskill.pk):
-            workskill.workskills = self.cleaned_data['workskills']
-            self.save_m2m()
-
-        return workskill
+# class WorkSkillForm(forms.ModelForm):
+#     workskills = forms.ModelMultipleChoiceField(
+#         queryset=Skill.objects.all().order_by("skill_name"),
+#         required=False,
+#         widget=FilteredSelectMultiple(
+#             verbose_name="workskills",
+#             is_stacked=False
+#         )
+#
+#     )
+#
+#     class Meta:
+#         model = WorkSkill
+#
+#     def __init__(self, *args, **kwargs):
+#         super(WorkSkillForm, self).__init__(*args, **kwargs)
+#         if(self.instance.pk):
+#             self.initial['workskills'] = self.instance.workskills.all()
+#             rel = ManyToManyRel(WorkHistory)
+#             self.fields['workskills'].widget = RelatedFieldWidgetWrapper(self.fields['workskills'].widget, rel, admin.site)
+#
+#     def save(self, commit=True):
+#         workskill = super(WorkSkillForm, self).save(commit=False)
+#
+#         if commit:
+#             workskill.save()
+#
+#         if(workskill.pk):
+#             workskill.workskills = self.cleaned_data['workskills']
+#             self.save_m2m()
+#
+#         return workskill
 
 

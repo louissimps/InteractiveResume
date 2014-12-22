@@ -31,43 +31,6 @@ class Skill(models.Model):
         return self.skill_name
 
 
-class SkillProficiency(models.Model):
-    SKILL_MINIMAL_EXPOSURE = 0
-    SKILL_WORKING_KNOWLEDGE = 1
-    SKILL_EXPERT = 2
-    SKILL_NINJA = 3
-    SKILL_PROFICIENCY_LEVELS = (
-        (SKILL_MINIMAL_EXPOSURE, 'Minimal Exposure'),
-        (SKILL_WORKING_KNOWLEDGE, 'Working Knowledge'),
-        (SKILL_EXPERT, 'Expert'),
-        (SKILL_NINJA, 'Ninja'),
-        )
-    skill_proficiency_level = models.IntegerField(choices=SKILL_PROFICIENCY_LEVELS, default=SKILL_WORKING_KNOWLEDGE)
-
-    def __str__(self):
-        return self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level]
-
-
-class WorkSkill(models.Model):
-    skill = models.ForeignKey(Skill)
-    skill_proficiency = models.ForeignKey(SkillProficiency)
-
-    def __str__(self):
-        return "{0} - {1}".format(self.skill.skill_name, self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level])
-
-    def get_label_class(self):
-        if self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level] == 'Ninja':
-            return 'success'
-        elif self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level] == 'Expert':
-            return 'primary'
-        elif self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level] == 'Working Knowledge':
-            return 'warning'
-        elif self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level] == 'Minimal Exposure':
-            return 'danger'
-
-
-
-
 class WorkHistory(models.Model):
     is_current = models.NullBooleanField("Is Current Position")
 
@@ -79,8 +42,7 @@ class WorkHistory(models.Model):
     work_description = tinymce_models.HTMLField('Description of Position', null=True, blank=True)
     slug = AutoSlugField(populate_from='place_of_work', always_update=True, unique_with=('start_date__year',))
 
-    workskills = models.ManyToManyField(WorkSkill, related_name="workskills", verbose_name="Skills Used", null=True, blank=True)
-
+    work_skills = models.ManyToManyField(Skill, through="WorkSkill", verbose_name="Skills Used", null=True, blank=True)
 
 
     @models.permalink
@@ -99,6 +61,45 @@ class WorkHistory(models.Model):
 
     def __str__(self):
         return "{0} {1}".format(self.place_of_work, self.get_dates_string())
+
+
+
+
+
+class WorkSkill(models.Model):
+    SKILL_MINIMAL_EXPOSURE = 0
+    SKILL_WORKING_KNOWLEDGE = 1
+    SKILL_EXPERT = 2
+    SKILL_NINJA = 3
+    SKILL_PROFICIENCY_LEVELS = (
+        (SKILL_MINIMAL_EXPOSURE, 'Minimal Exposure'),
+        (SKILL_WORKING_KNOWLEDGE, 'Working Knowledge'),
+        (SKILL_EXPERT, 'Expert'),
+        (SKILL_NINJA, 'Ninja'),
+    )
+
+
+
+    skill = models.ForeignKey(Skill)
+    skill_proficiency_level = models.IntegerField(choices=SKILL_PROFICIENCY_LEVELS, default=SKILL_WORKING_KNOWLEDGE)
+    work_history = models.ForeignKey(WorkHistory)
+
+    def __str__(self):
+        return self.skill.skill_name
+
+    def get_level(self):
+        return self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level]
+
+    def get_label_class(self):
+        b = self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level][1]
+        if b == 'Ninja':
+            return 'success'
+        elif b == 'Expert':
+            return 'primary'
+        elif b == 'Working Knowledge':
+            return 'warning'
+        elif b == 'Minimal Exposure':
+            return 'danger'
 
 
 class Education(models.Model):
@@ -137,9 +138,6 @@ class Resume(models.Model):
 
     def __str__(self):
         return "{0} {1}".format(self.company.company_name, self.position)
-
-
-
 
 
 class Application(models.Model):
