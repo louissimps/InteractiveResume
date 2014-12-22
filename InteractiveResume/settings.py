@@ -93,9 +93,9 @@ STATIC_URL = '/static/'
 
 
 
-# TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-#     'django.core.context_processors.request',
-# )
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 
 
 # Additional locations of static files
@@ -155,7 +155,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'app',
     'tinymce',
- #   'suit',
+    'suit',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

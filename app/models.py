@@ -88,18 +88,18 @@ class WorkSkill(models.Model):
         return self.skill.skill_name
 
     def get_level(self):
-        return self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level]
+        return self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level][1]
 
     def get_label_class(self):
         b = self.SKILL_PROFICIENCY_LEVELS[self.skill_proficiency_level][1]
         if b == 'Ninja':
-            return 'success'
+            return {'label': 'success', 'glyph': 'glass'}
         elif b == 'Expert':
-            return 'primary'
+            return {'label': 'primary', 'glyph': 'star'}
         elif b == 'Working Knowledge':
-            return 'warning'
+            return {'label': 'info', 'glyph': 'wrench'}
         elif b == 'Minimal Exposure':
-            return 'danger'
+            return {'label': 'danger', 'glyph': 'warning-sign'}
 
 
 class Education(models.Model):

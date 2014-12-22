@@ -3,7 +3,7 @@
 {% block content %}
 {% load staticfiles %}
 
-<div class="container">
+<div class="row">
 
     <div class="panel">
         <div class="panel-body">
@@ -11,8 +11,7 @@
                 <div class="col-lg-7"><img class="img-rounded" src="{% static 'app/img/profile.jpg' %}" title="Louie Simpson Profile" alt="Louie Simpson Profile"></div>
                 <div class="col-lg-5">
                     <div class="panel panel-info">
-                        <div class="panel-title"><h3>{{ contact }}</h3></div>
-                        <div class="panel-body">{{ current_resume.about_me | safe }}</div>
+                        <div class="panel-body aboutme-panel">{{ current_resume.about_me | safe }}</div>
                     </div>
 
                 </div>
@@ -29,7 +28,12 @@
         {% include 'app/currentposition.html' %}
     </div>
     <div class="col-md-4">
-        {% include 'app/currentskillset.html' %}
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h3 class="panel-title">Current Skillset</h3></div>
+            <div class="panel-body">
+                {% include 'app/skills_snippet.html' %}
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
         {% include 'app/currentphoto.html' %}

@@ -26,7 +26,7 @@ def home(request):
             'current_position': wh,
             'current_resume': Resume.objects.get(is_default=True),
             'current_application': Application.objects.get(pk=1),
-            'current_skills': wh.work_skills.through
+            'current_skills': WorkSkill.objects.filter(work_history=wh).select_related().order_by('-skill_proficiency_level'),
         })
     )
 
@@ -70,7 +70,7 @@ def history(request):
     return render(
         request,
         'app/history.html',
-        context_instance = RequestContext(request,
+        context_instance=RequestContext(request,
         {
             'title': 'Work History',
             'contact': Contact.objects.get(pk=1),
@@ -80,18 +80,32 @@ def history(request):
         })
     )
 
+def education(request):
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/education.html',
+        context_instance=RequestContext(request,
+        {
+            'current_application': Application.objects.get(pk=1),
+            'education': Education.objects.all().order_by('school_name'),
+
+        })
+    )
+
 
 def workhistory(request, id, slug):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
+    wh = WorkHistory.objects.get(pk=id)
     return render(
         request,
         'app/workhistory.html',
         context_instance = RequestContext(request,
         {
             'title': 'Work History Detail',
-            'work_history': WorkHistory.objects.get(pk=id),
+            'work_history': wh,
             'current_application': Application.objects.get(pk=1),
-
+            'current_skills': WorkSkill.objects.filter(work_history=wh).select_related().order_by('-skill_proficiency_level'),
         })
     )

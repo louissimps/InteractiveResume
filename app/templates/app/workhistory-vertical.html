@@ -18,6 +18,7 @@
                 <div class="timeline-heading">
                     <h4 class="timeline-title">{{ history.position }}</h4>
                     <h6 class="timeline-title">{{ history.place_of_work }}</h6>
+                    <h6 class="timeline-title">{{ history.location }}</h6>
 
                     <p>
                         <i class="glyphicon glyphicon-time"></i> Start
@@ -28,7 +29,7 @@
                 <div class="timeline-body">
                     <p>{{ history.work_description | truncatechars:200 | safe }}</p>
 
-                    <div class="float-right"><a class="btn btn-default" href="{{ history.get_absolute_url }}">Details.... &raquo;</a>
+                    <div class="float-right"><button class="btn btn-default"><a href="{{ history.get_absolute_url }}">Details.... &raquo;</a></button>
                     </div>
                 </div>
             </div>

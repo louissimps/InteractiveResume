@@ -1,9 +1,0 @@
-
-        <div class="panel panel-primary">
-            <div class="panel-heading"><h3 class="panel-title">Current Skillset</h3></div>
-            <div class="panel-body">
-                {% for ws in current_position.work_skills.through %}
-                    <li>{{ ws.skill.skill_name }}</li>
-                {% endfor %}
-            </div>
-            </div>

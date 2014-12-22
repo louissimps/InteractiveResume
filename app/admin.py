@@ -18,7 +18,7 @@ class CompanyAdmin(admin.ModelAdmin):
 class WorkSkillTabularInline(admin.TabularInline):
     model = WorkSkill
     extra = 5
-    min_num = 10
+    min_num = 1
 
 class WorkSkillAdmin(admin.ModelAdmin):
     pass
