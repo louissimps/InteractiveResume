@@ -5,6 +5,9 @@ Django settings for InteractiveResume project.
 from os import path
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -89,6 +92,12 @@ STATIC_URL = '/static/'
 
 
 
+
+# TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+#     'django.core.context_processors.request',
+# )
+
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -146,6 +155,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'app',
     'tinymce',
+ #   'suit',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

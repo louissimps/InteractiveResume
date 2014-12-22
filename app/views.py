@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
-from app.models import Contact, WorkHistory, Education, WorkSkill
+from app.models import *
 import itertools
 from django.utils.text import slugify
 
@@ -27,6 +27,8 @@ def home(request):
             'contact': Contact.objects.get(pk=1),
             'current_position': WorkHistory.objects.get(is_current='True'),
             'work_histories': work_histories,
+            'current_resume': Resume.objects.get(is_default=True),
+            'current_application': Application.objects.get(pk=1),
         })
     )
 
@@ -75,6 +77,7 @@ def history(request):
             'title': 'Work History',
             'contact': Contact.objects.get(pk=1),
             'work_histories': WorkHistory.objects.all().order_by('-start_date'),
+            'current_application': Application.objects.get(pk=1),
 
         })
     )
@@ -90,6 +93,7 @@ def workhistory(request, id, slug):
         {
             'title': 'Work History Detail',
             'work_history': WorkHistory.objects.get(pk=id),
+            'current_application': Application.objects.get(pk=1),
 
         })
     )

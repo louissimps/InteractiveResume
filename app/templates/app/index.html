@@ -3,10 +3,22 @@
 {% block content %}
 {% load staticfiles %}
 
-<div class="jumbotron">
 <div class="container">
-    <h1>About Me</h1>
 
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-7"><img class="img-rounded" src="{% static 'app/img/profile.jpg' %}" title="Louie Simpson Profile" alt="Louie Simpson Profile"></div>
+                <div class="col-lg-5">
+                    <div class="panel panel-info">
+                        <div class="panel-title"><h3>{{ contact }}</h3></div>
+                        <div class="panel-body">{{ current_resume.about_me | safe }}</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
 </div>
 
 

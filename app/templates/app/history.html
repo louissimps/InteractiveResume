@@ -2,9 +2,18 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
+<div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title"><h2>Work History</h2></div>
+
+        </div>
+        <div class="panel-body">
 
         {% include 'app/workhistory-vertical.html' %}
+
+        </div>
+</div>
+
 
 
 {% endblock %}

@@ -4,28 +4,34 @@
 	{% for history in work_histories %}
         <li>
             <div class="timeline-badge primary">
-        {{ history.start_date|date:"Y" }}
+                {{ history.start_date|date:"Y" }}
             </div>
             <br />
-                <br />
+            <br />
 
         </li>
 
-	<li{% cycle '' ' class="timeline-inverted"' %}>
-          <div class="timeline-badge success"><i class="glyphicon glyphicon-hand-{% cycle 'left' 'right' %}"></i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title">{{ history.position }}</h4>
-              <h6 class="timeline-title">{{ history.place_of_work }}</h6>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Start Date: {{ history.start_date }}<br />
-                End Date: {{ history.end_date }}
-				</small></p>
+        <li{% cycle '' ' class="timeline-inverted"' %}>
+            <div class="timeline-badge success"><i class="glyphicon glyphicon-hand-{% cycle 'left' 'right' %}"></i>
             </div>
-            <div class="timeline-body">
-				<p>{{ history.work_description | truncatechars:200 | safe  }}</p>
-                <div class="float-right"><a class="btn btn-default" href="{{  history.get_absolute_url }}">Details.... &raquo;</a></div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title">{{ history.position }}</h4>
+                    <h6 class="timeline-title">{{ history.place_of_work }}</h6>
+
+                    <p>
+                        <i class="glyphicon glyphicon-time"></i> Start
+                            Date: {{ history.start_date }}<br/>
+                            End Date: {{ history.end_date }}
+                    </p>
+                </div>
+                <div class="timeline-body">
+                    <p>{{ history.work_description | truncatechars:200 | safe }}</p>
+
+                    <div class="float-right"><a class="btn btn-default" href="{{ history.get_absolute_url }}">Details.... &raquo;</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </li>
-	{% endfor %}
+    {% endfor %}
 </ul>
