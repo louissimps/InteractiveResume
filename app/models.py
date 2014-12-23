@@ -57,7 +57,11 @@ class WorkHistory(models.Model):
         return ('place_of_work__icontains',)
 
     def get_dates_string(self):
-        return "({0}) - ({1})".format(self.start_date, self.end_date)
+        if self.end_date is None:
+            p = 'Current'
+        else:
+            p = self.end_date
+        return "{0} - {1}".format(self.start_date, p)
 
     def __str__(self):
         return "{0} {1}".format(self.place_of_work, self.get_dates_string())
