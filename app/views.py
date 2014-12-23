@@ -7,8 +7,7 @@ from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 from app.models import *
-import itertools
-from django.utils.text import slugify
+from django.shortcuts import get_object_or_404
 
 
 def home(request):
@@ -97,7 +96,7 @@ def education(request):
 def workhistory(request, id, slug):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
-    wh = WorkHistory.objects.get(pk=id)
+    wh = get_object_or_404(WorkHistory, pk=id)
     return render(
         request,
         'app/workhistory.html',
