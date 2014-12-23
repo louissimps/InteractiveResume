@@ -1,0 +1,26 @@
+ASP.NET
+WCF
+Silverlight
+Javascript
+Jquery
+PERL
+C#
+VB.NET
+Python
+PHP
+MySQL
+PostrgreSQL
+SQL Server
+SQL Server 2005
+SQL Server 2008
+AngularJS
+ASP.NET MVC
+Django
+Liquid Templating
+XML
+Visual Studio 2000
+Visual Studio 2003
+Visual Studio 2008
+Visual Studio 2010
+Visual Studio 2012
+Visual Studio 2013

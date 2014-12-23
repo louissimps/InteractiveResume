@@ -1,7 +1,7 @@
 """
 Django settings for InteractiveResume project.
 """
-
+import os
 from os import path
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
@@ -100,7 +100,13 @@ STATIC_ROOT = path.join(PROJECT_ROOT, 'static').replace('\\', '/')
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
