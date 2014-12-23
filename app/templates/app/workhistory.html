@@ -10,22 +10,6 @@
         <div class="panel-body">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <span class="panel-title">Location:</span>
-                </div>
-                <div class="panel-body">
-                    <div>{{ work_history.location }}</div>
-                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <span class="panel-title">Dates:</span>
-                </div>
-                <div class="panel-body">
-                    <div>{{ work_history.get_dates_string }}</div>
-                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
                     <span class="panel-title">Work description:</span>
                 </div>
                 <div class="panel-body">
@@ -40,6 +24,24 @@
                     {% include 'app/skills_snippet.html' %}
                 </div>
             </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <span class="panel-title">Dates:</span>
+                </div>
+                <div class="panel-body">
+                    <div>{{ work_history.get_dates_string }}</div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <span class="panel-title">Location:</span>
+                </div>
+                <div class="panel-body">
+                    <div>{{ work_history.location }}</div>
+                </div>
+            </div>
+
         </div>
     </div>
 
