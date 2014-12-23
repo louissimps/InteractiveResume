@@ -5,7 +5,7 @@
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <span class="panel-title">{{ work_history.position }} at {{ work_history.place_of_work }}</span>
+            <span class="panel-title">{{ work_history.position }} at {{ work_history.place_of_work }}</span> <a href="{% url 'history' %}">(back to list)</a>
         </div>
         <div class="panel-body">
             <div class="panel panel-info">
@@ -34,7 +34,7 @@
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <span class="panel-title">Skills used:</span>
+                    <span class="panel-title" data-toggle="modal" data-target="#myModal" >Skills used <span class="glyphicon glyphicon-question-sign"></span></span>
                 </div>
                 <div class="panel-body">
                     {% include 'app/skills_snippet.html' %}
@@ -42,7 +42,6 @@
             </div>
         </div>
     </div>
-
 
 
 

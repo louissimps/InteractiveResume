@@ -1,7 +1,7 @@
 <div class="button-group">
     {% for ws in current_skills %}
-        <div data-toggle="tooltip" data-placement="top" title="Experience Level: {{ ws.get_level }}" class="btn btn-sm btn-{{ ws.get_label_class.label }}">
+        <a data-toggle="tooltip" data-placement="top" title="Experience Level: {{ ws.get_level }}"  class="btn btn-sm btn-{{ ws.get_label_class.label }}">
             <span class="glyphicon glyphicon-{{ ws.get_label_class.glyph }}"> {{ ws.skill.skill_name }}</span>
-        </div>
+        </a>
     {% endfor %}
 </div>

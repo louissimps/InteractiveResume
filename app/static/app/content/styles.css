@@ -1,5 +1,6 @@
 .small-panel {
-    width: 260px
+    white-space: nowrap;
+    max-width:400px
 }
 .aboutme-panel {
     height:385px
