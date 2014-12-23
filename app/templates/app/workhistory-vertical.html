@@ -20,12 +20,12 @@
                 </div>
                 <div class="panel-body">
                     <p>{{ history.place_of_work }} - {{ history.location }}</p>
+                     <p>{{ history.work_description | truncatechars:200 | safe }}</p>
                     <small>
                         <i class="glyphicon glyphicon-time"></i> Start
                             Date: {{ history.start_date }}<br/>
                             End Date: {{ history.end_date|default_if_none:"Current" }}
                     </small>
-                     <p>{{ history.work_description | truncatechars:200 | safe }}</p>
 
                     <div class="float-right">
                         <button class="btn btn-default"><a href="{{ history.get_absolute_url }}">Details.... &raquo;</a></button>
