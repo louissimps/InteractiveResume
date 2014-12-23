@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib import admin
 
 from django.conf.urls.static import static
+from app.models import Application
 
 urlpatterns = patterns('',
     # Examples:
@@ -28,6 +29,8 @@ urlpatterns = patterns('',
             {
                 'title':'Log in',
                 'year':datetime.now().year,
+                'current_application': Application.objects.get(pk=1),
+
             }
         },
         name='login'),
