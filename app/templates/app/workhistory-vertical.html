@@ -24,8 +24,8 @@
                      <p>{{ history.work_description | truncatechars:200 | striptags }}</p>
                     <small>
                         <i class="glyphicon glyphicon-time"></i> Start
-                            Date: {{ history.start_date }}<br/>
-                            End Date: {{ history.end_date|default_if_none:"Current" }}
+                            Date: {{ history.start_date|date:"d M Y" }}<br/>
+                            End Date: {{ history.end_date|date:"d M Y"|default_if_none:"Current" }}
                     </small>
 
                 </div>
