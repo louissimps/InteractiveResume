@@ -10,6 +10,7 @@ from app.models import *
 from django.shortcuts import get_object_or_404
 
 
+
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -91,6 +92,7 @@ def education(request):
 
         })
     )
+
 
 
 def workhistory(request, id, slug):
