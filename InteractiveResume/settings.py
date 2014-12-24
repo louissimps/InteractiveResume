@@ -172,7 +172,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_bleach',
+    # 'django_bleach',
     'app',
     'tinymce',
     'suit',
@@ -183,8 +183,8 @@ INSTALLED_APPS = (
 )
 
 
-#DJANGO BLEACH SETTINGS
-BLEACH_STRIP_TAGS = True
+# #DJANGO BLEACH SETTINGS
+# BLEACH_STRIP_TAGS = True
 
 
 # A sample logging configuration. The only tangible logging

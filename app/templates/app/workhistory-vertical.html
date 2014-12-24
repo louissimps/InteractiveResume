@@ -1,5 +1,5 @@
 {% load cycle from future %}
-{% load bleach_tags %}
+{#{% load bleach_tags %}#}
     {% load staticfiles %}
 <ul class="timeline">
 	{% for history in work_histories %}
@@ -21,7 +21,7 @@
                 </div>
                 <div class="panel-body">
                     <p>{{ history.place_of_work }} - {{ history.location }}</p>
-                     <p>{{ history.work_description | truncatechars:200 | bleach }}</p>
+                     <p>{{ history.work_description | truncatechars:200 | striptags }}</p>
                     <small>
                         <i class="glyphicon glyphicon-time"></i> Start
                             Date: {{ history.start_date }}<br/>
