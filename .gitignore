@@ -4,14 +4,10 @@ __pycache__/
 
 # C extensions
 *.so
-<<<<<<< HEAD
-*.sqlite3
-=======
-
-
 #*.sqlite3
 
->>>>>>> master
+#.DS_Store
+
 # Distribution / packaging
 .Python
 env/
