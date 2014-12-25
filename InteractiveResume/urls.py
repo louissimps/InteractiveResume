@@ -40,7 +40,7 @@ urlpatterns = patterns('',
             'next_page': '/',
         },
         name='logout'),
-
+    # url(r'^api-auth/', include("rest_framework.urls", namespace='rest_framework')),
     # Uncomment the admin/doc line below to enable admin documentation:
      url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

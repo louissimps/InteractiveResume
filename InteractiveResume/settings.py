@@ -176,10 +176,12 @@ INSTALLED_APPS = (
     'app',
     'tinymce',
     'suit',
+    'rest_framework',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'bootstrap_themes',
 )
 
 

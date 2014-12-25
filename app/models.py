@@ -5,7 +5,7 @@ Definition of models.
 from django.db import models
 from tinymce import models as tinymce_models
 from autoslug import AutoSlugField
-
+from bootstrap_themes import list_themes
 
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
@@ -145,5 +145,5 @@ class Resume(models.Model):
 
 
 class Application(models.Model):
-    bootstrap_theme = models.CharField("Twitter Bootstrap image", max_length=200, null=False, blank=False)
+    bootstrap_theme = models.CharField(default='spacelab', max_length=100,choices=list_themes(),)
 
