@@ -21,7 +21,7 @@ $(document).ready(function() {
 });
 
 function setTheme(themeName, themePath) {
-    var cssLink = "//netdna.bootstrapcdn.com/bootswatch/3.1.1/"+themeName+"/bootstrap.min.css";
+    var cssLink = "//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/"+themeName+"/bootstrap.min.css";
     $('#bootstrapTheme').attr('href', cssLink);
 
     $.cookie("themeName", themeName, { expires: 7, path: "/" });
