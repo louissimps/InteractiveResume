@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - Louie Simpson Interactive Resume v1</title>
     {% load staticfiles %}
-{#        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
-{#        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">     <!-- Bootstrap core CSS -->#}
-        <link id="bootstrapTheme" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/spacelab/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">     <!-- Bootstrap core CSS -->
+        <link id="bootstrapTheme" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.1.1/spacelab/bootstrap.min.css">
 
 
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
@@ -35,24 +35,7 @@
                     <!-- foo -->
                     <li class="dropdown">
                         <a id="dLabel" class="dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" role="button" data-target="#">Theme <span class="caret"></span> </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a href="javascript:setTheme('amelia')">amelia</a></li>
-                            <li><a href="javascript:setTheme('cerulean')">cerulean</a> </li>
-                            <li><a href="javascript:setTheme('cosmo')">cosmo</a> </li>
-                            <li><a href="javascript:setTheme('cyborg', '/css/themes/cyborg/')">cyborg</a> </li>
-                            <li><a href="javascript:setTheme('darkly', '/css/themes/darkly/')">darkly</a> </li>
-                            <li><a href="javascript:setTheme('flatly', '/css/themes/flatly/')">flatly</a> </li>
-                            <li><a href="javascript:setTheme('journal', '/css/themes/journal/')">journal</a> </li>
-                            <li><a href="javascript:setTheme('lumen', '/css/themes/lumen/')">lumen</a> </li>
-                            <li><a href="javascript:setTheme('readable', '/css/themes/readable/')">readable</a> </li>
-                            <li><a href="javascript:setTheme('sandstone', '/css/themes/readable/')">readable</a> </li>
-                            <li><a href="javascript:setTheme('simplex', '/css/themes/simplex/')">simplex</a> </li>
-                            <li><a href="javascript:setTheme('slate', '/css/themes/slate/')">slate</a> </li>
-                            <li><a href="javascript:setTheme('spacelab', '/css/themes/spacelab/')">spacelab</a> </li>
-                            <li><a href="javascript:setTheme('superhero', '/css/themes/superhero/')">superhero</a> </li>
-                            <li><a href="javascript:setTheme('united', '/css/themes/united/')">united</a> </li>
-                            <li><a href="javascript:setTheme('yeti', '/css/themes/yeti/')">yeti</a> </li>
-                        </ul>
+                        <ul id="theme_list" class="dropdown-menu" role="menu" aria-labelledby="dLabel"></ul>
 
                     </li> <!--/.nav-collapse -->
                 </ul>
