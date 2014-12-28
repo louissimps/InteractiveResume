@@ -1,19 +1,22 @@
 {% load bootstrap_themes %}
+{% load pipeline %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - Louie Simpson Interactive Resume v1</title>
-    {% load staticfiles %}
 {#        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
 {#        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">     <!-- Bootstrap core CSS -->#}
+{% stylesheet 'libraries' %}
+
         <link id="bootstrapTheme" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.1.1/spacelab/bootstrap.min.css">
 
 
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/styles.css' %}" />
-    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+{#    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'app/content/styles.css' %}" />#}
+{#    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>#}
 </head>
 
 <body>
@@ -56,12 +59,12 @@
             <p>&copy; {{ year }} - Louie Simpson</p>
         </footer>
     </div>
-
-    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="{% static 'app/scripts/respond.js' %}"></script>
-    <script src="{% static 'app/scripts/app.js' %}"></script>
+{% javascript 'libraries' %}
+{#    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>#}
+{#    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>#}
+{#    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>#}
+{#    <script src="{% static 'app/scripts/respond.js' %}"></script>#}
+{#    <script src="{% static 'app/scripts/app.js' %}"></script>#}
 {% block scripts %}{% endblock %}
 <script type="text/javascript">
 var clicky_site_ids = clicky_site_ids || [];
