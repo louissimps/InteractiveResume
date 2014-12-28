@@ -1,3 +1,4 @@
+{% load bootstrap_themes %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - Louie Simpson Interactive Resume v1</title>
     {% load staticfiles %}
-    <link href="{{ current_application.bootstrap_theme }}" rel="stylesheet">
+{#        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
+{#        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">     <!-- Bootstrap core CSS -->#}
+        <link id="bootstrapTheme" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.1.1/spacelab/bootstrap.min.css">
+
 
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/styles.css' %}" />
@@ -28,7 +32,12 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'history' %}">Work History</a></li>
                     <li><a href="{% url 'education' %}">Education</a></li>
+                    <!-- foo -->
+                    <li class="dropdown">
+                        <a id="dLabel" class="dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" role="button" data-target="#">Theme <span class="caret"></span> </a>
+                        <ul id="theme_list" class="dropdown-menu" role="menu" aria-labelledby="dLabel"></ul>
 
+                    </li> <!--/.nav-collapse -->
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -49,10 +58,10 @@
     </div>
 
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
     <script src="{% static 'app/scripts/app.js' %}"></script>
-
 {% block scripts %}{% endblock %}
 <script type="text/javascript">
 var clicky_site_ids = clicky_site_ids || [];

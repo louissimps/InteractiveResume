@@ -30,7 +30,11 @@
                     <span class="panel-title">Dates:</span>
                 </div>
                 <div class="panel-body">
-                    <div>{{ work_history.get_dates_string }}</div>
+                    <small>
+                        <i class="glyphicon glyphicon-time"></i> {{ work_history.start_date|date:"d M Y" }} -
+                            {{ work_history.end_date|date:"d M Y"|default_if_none:"Current" }}
+                    </small>
+
                 </div>
             </div>
             <div class="panel panel-info">
