@@ -122,18 +122,18 @@ STATICFILES_DIRS = (
 )
 
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
+    # 'pipeline.finders.PipelineFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-PIPELINE_ENABLED = True
+# PIPELINE_ENABLED = True
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
@@ -185,39 +185,39 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'bootstrap_themes',
-    'pipeline',
+    # 'pipeline',
 )
 
-PIPELINE_CSS = {
-    # Project libraries.
-    'libraries': {
-        'source_filenames': (
-            'app/content/site.css',
-            'app/content/styles.css',
-        ),
-        # Compress passed libraries and have
-        # the output in`css/libs.min.css`.
-        'output_filename': 'app/content/libs.min.css',
-    }
-    # ...
-}
-# JavaScript files.
-PIPELINE_JS = {
-    # Project JavaScript libraries.
-    'libraries': {
-        'source_filenames': (
-            'bower_components/modernizr/modernizr.js'
-            'bower_components/jquery/dist/jquery.js'
-            'bower_components/bootstrap/dist//js/bootstrap.js'
-            'bower_components/jquery.cookie/jquery.cookie.js'
-            'bower_components/respond/src/respond.js'
-            'app/scripts/app.js'
-        ),
-        # Compress all passed files into `js/libs.min.js`.
-        'output_filename': 'app/scripts/libs.min.js',
-    }
-    # ...
-}
+# PIPELINE_CSS = {
+#     # Project libraries.
+#     'libraries': {
+#         'source_filenames': (
+#             'app/content/site.css',
+#             'app/content/styles.css',
+#         ),
+#         # Compress passed libraries and have
+#         # the output in`css/libs.min.css`.
+#         'output_filename': 'app/content/libs.min.css',
+#     }
+#     # ...
+# }
+# # JavaScript files.
+# PIPELINE_JS = {
+#     # Project JavaScript libraries.
+#     'libraries': {
+#         'source_filenames': (
+#             'bower_components/modernizr/modernizr.js'
+#             'bower_components/jquery/dist/jquery.js'
+#             'bower_components/bootstrap/dist//js/bootstrap.js'
+#             'bower_components/jquery.cookie/jquery.cookie.js'
+#             'bower_components/respond/src/respond.js'
+#             'app/scripts/app.js'
+#         ),
+#         # Compress all passed files into `js/libs.min.js`.
+#         'output_filename': 'app/scripts/libs.min.js',
+#     }
+#     # ...
+# }
 
 
 
