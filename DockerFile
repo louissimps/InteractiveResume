@@ -1,0 +1,17 @@
+FROM amazon/aws-eb-python:3.4.2-onbuild-3.5.1
+
+RUN apt-get install -y tar git curl nano wget dialog net-tools build-essential
+RUN apt-get install -y supervisor
+RUN apt-get update && apt-get install -y \
+    sqlite3 \
+    gcc \
+  --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+# copy the contents of this directory over to the container at location /src
+ADD . /src
+
+# Add and install Python modules
+#we shouldn't have to do this twice but that's how the folks over at amazon suggested.
+# we'd probably be fine with just ADD . /src
+ADD requirements.txt /src/requirements.txt
+RUN cd /src && pip install -r /src/requirements.txt
